@@ -25,10 +25,12 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #06060B;
+  background: #040610;
   background-repeat: no-repeat;
   background-size: cover;
+  color: #f5f5f5f8;
   font-family: "Oxanium", sans-serif;
+  background-image: url("img/dgb2.png");
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -56,7 +58,7 @@ body {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #44444454;
+  background: rgba(68, 68, 68, 0.329);
   border-radius: 8px;
 }
 
@@ -75,11 +77,51 @@ body {
   scrollbar-width: none; /* Firefox */
 }
 
+code {
+  font-family: source-code-pcdro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+button {
+  cursor: pointer;
+  font-family: "Orbitron", sans-serif;
+  font-weight: 500;
+}
+button:disabled {
+  opacity: 0.5;
+  cursor: default !important;
+}
+
+textarea,
+input {
+  font-family: "Orbitron", sans-serif;
+  font-weight: 500;
+}
+input:focus {
+  outline: none;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
 .scroll-x::-webkit-scrollbar-thumb,
 .scroll-xy::-webkit-scrollbar-thumb,
 .scroll-y::-webkit-scrollbar-thumb {
-  width: 2px;
-  height: 2px;
-  background-color: #44444454;
+  width: 6px;
+  height: 6px;
+  background-color: #333541;
   border-radius: 8px;
 }
