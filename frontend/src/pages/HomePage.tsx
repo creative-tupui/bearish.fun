@@ -1,5 +1,6 @@
 import React from 'react';
 import BettingTracker from '../components/BettingTracker';
+import JackPotWonHistory from '../components/JackPotWonHistory';
 
 const HomePage: React.FC = () => {
   return (
@@ -8,8 +9,8 @@ const HomePage: React.FC = () => {
         <div className="flex-1">
           <BettingTracker />
         </div>
-        <div className="w-[431px]">
-          <div className="bg-card-primary rounded-lg p-4 flex flex-col gap-4"></div>
+        <div className="w-[431px] flex flex-col gap-1">
+          <JackPotWonHistory />
           <div className="bg-card-primary rounded-lg p-4 flex flex-col gap-4"></div>
         </div>
       </div>
