@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import logo from '../assets/images/logo.png';
-import solanaLogo from '../assets/images/solana-logo.png';
+import logo from '@assets/images/logo.png';
+import solanaLogo from '@assets/images/solana-logo.png';
+import userAvatar from '@assets/images/users/avatar1.png';
 import { useWallet } from '@solana/wallet-adapter-react';
-import { useWalletModal } from "../contexts/WalletModalProvider"
-import userAvatar from '../assets/images/users/avatar1.png';
-import TermAgreementModal from '../components/TermAgreementModal';
+import { useWalletModal } from "@contexts/WalletModalProvider"
+import TermAgreementModal from '@components/TermAgreementModal';
 const Navbar: React.FC = () => {
   const { connecting, connected, disconnect, publicKey } = useWallet();
   const { setVisible } = useWalletModal();

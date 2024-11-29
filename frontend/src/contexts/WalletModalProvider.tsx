@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import  { createContext, useContext, useMemo, useState } from "react"
-import WalletModal from "../components/WalletModal"
+import WalletModal from "@components/WalletModal"
 
 const WalletModalContext = createContext<any>({
   visible: false,

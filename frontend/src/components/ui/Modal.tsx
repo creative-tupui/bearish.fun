@@ -1,5 +1,5 @@
 import React from 'react';
-import closeIcon from '../../assets/images/close.png';
+import closeIcon from '@assets/images/close.png';
 
 interface ModalProps {
   title: string;
