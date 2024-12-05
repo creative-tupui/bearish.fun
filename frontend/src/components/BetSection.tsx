@@ -1,6 +1,7 @@
 import BetAmountSetSection from "./BetAmountSetSection"
 import BetButtonSection from "./BetButtonSection"
 import BettedUserSection from "./BettedUserSection"
+import AutoModeSection from "./AutoModeSection"
 
 const BetSection = () => {
   return (
@@ -8,6 +9,7 @@ const BetSection = () => {
       <BetAmountSetSection />
       <BetButtonSection />
       <BettedUserSection />
+      <AutoModeSection />
     </div>
   )
 }

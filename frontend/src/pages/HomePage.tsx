@@ -16,10 +16,10 @@ const HomePage: React.FC = () => {
         </div>
       </div>
       <div className="w-full flex flex-col md:flex-row gap-1">
-        <div className="flex flex-col gap-1">
+        <div className="flex-1">
           <div className="bg-card-secondary rounded-lg p-4 flex items-center"></div>
         </div>
-        <div className="">
+        <div className="w-[431px]">
           <div className="bg-card-primary rounded-lg p-4 flex flex-col gap-4"></div>
         </div>
       </div>
