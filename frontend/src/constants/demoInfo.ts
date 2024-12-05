@@ -1,12 +1,14 @@
-export const demoUsersInfo = [
+import { User } from "../types";
+
+export const demoUsersInfo: User[] = [
   {
     rank: 1,
     username: "JohnDoe",
     avatar: "/src/assets/images/users/avatar1.png",
     bets: 18,
     wins: 14,
-    winRate: "85%",
-    netProfit: "+$111.45",
+    winRate: 0.85,
+    netProfit: 111.45,
   },
   {
     rank: 2,
@@ -14,8 +16,8 @@ export const demoUsersInfo = [
     avatar: "/src/assets/images/users/avatar1.png",
     bets: 20,
     wins: 15,
-    winRate: "75%",
-    netProfit: "+$100.00",
+    winRate: 0.75,
+    netProfit: 100.00,
   },
   {
     rank: 3,
@@ -23,8 +25,8 @@ export const demoUsersInfo = [
     avatar: "/src/assets/images/users/avatar1.png",
     bets: 25,
     wins: 20,
-    winRate: "80%",
-    netProfit: "+$90.00",
+    winRate: 0.80,
+    netProfit: 90.00,
   },
   {
     rank: 4,
@@ -32,8 +34,8 @@ export const demoUsersInfo = [
     avatar: "/src/assets/images/users/avatar1.png",
     bets: 22,
     wins: 18,
-    winRate: "82%",
-    netProfit: "+$80.00",
+    winRate: 0.82,
+    netProfit: 80.00,
   },
   {
     rank: 5,
@@ -41,8 +43,8 @@ export const demoUsersInfo = [
     avatar: "/src/assets/images/users/avatar1.png",
     bets: 28,
     wins: 22,
-    winRate: "79%",
-    netProfit: "+$70.00",
+    winRate: 0.79,
+    netProfit: 70.00,
   },
   {
     rank: 6,
@@ -50,8 +52,8 @@ export const demoUsersInfo = [
     avatar: "/src/assets/images/users/avatar1.png",
     bets: 30,
     wins: 24,
-    winRate: "80%",
-    netProfit: "+$60.00",
+    winRate: 0.80,
+    netProfit: 60.00,
   },
   {
     rank: 7,
@@ -59,8 +61,8 @@ export const demoUsersInfo = [
     avatar: "/src/assets/images/users/avatar1.png",
     bets: 32,
     wins: 26,
-    winRate: "81%",
-    netProfit: "+$50.00",
+    winRate: 0.81,
+    netProfit: 50.00,
   },
   {
     rank: 8,
@@ -68,8 +70,8 @@ export const demoUsersInfo = [
     avatar: "/src/assets/images/users/avatar1.png",
     bets: 35,
     wins: 28,
-    winRate: "80%",
-    netProfit: "+$40.00",
+    winRate: 0.80,
+    netProfit: 40.00,
   },
   {
     rank: 9,
@@ -77,17 +79,16 @@ export const demoUsersInfo = [
     avatar: "/src/assets/images/users/avatar1.png",
     bets: 38,
     wins: 30,
-    winRate: "79%",
-    netProfit: "+$30.00",
+    winRate: 0.79,
+    netProfit: 30.00,
   },
   {
     rank: 10,
     username: "LauraHernandez",
     avatar: "/src/assets/images/users/avatar1.png",
     bets: 40,
-    wins: 32,
-    winRate: "80%",
-    netProfit: "+$20.00",
+    wins: 12,
+    winRate: 0.30,
+    netProfit: -20.00,
   },
 ];
-

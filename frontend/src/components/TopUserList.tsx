@@ -27,8 +27,8 @@ const TopUserList = () => {
             <div className="w-full flex justify-between items-center">
               <div className="w-[36px]">{user.bets}</div>
               <div className="w-[36px]">{user.wins}</div>
-              <div className="w-[62px]">{user.winRate}</div>
-              <div className="w-[65px]">{user.netProfit}</div>
+              <div className="w-[62px]">{user.winRate * 100}%</div>
+              <div className={`w-[65px] ${user.netProfit < 0 ? "text-negative-light" : "text-positive-light"}`}>{user.netProfit < 0 ? `- $${Math.abs(user.netProfit)}` : user.netProfit > 0 ? `+ $${user.netProfit}` : user.netProfit}</div>
             </div>
           </div>
         </div>
