@@ -1,4 +1,4 @@
-import { User } from "../types";
+import { JackpotUser, User } from "../types";
 
 export const demoUsersInfo: User[] = [
   {
@@ -90,5 +90,110 @@ export const demoUsersInfo: User[] = [
     wins: 12,
     winRate: 0.30,
     netProfit: -20.00,
+  },
+];
+
+export const jackpotDemoUsers: JackpotUser[] = [
+  {
+    id: 10,
+    reward: 0,
+    investors: [],
+  },
+  {
+    id: 9,
+    reward: 23900,
+    investors: [
+      { avatar: "/src/assets/images/users/avatar1.png" },
+    ],
+  },
+  {
+    id: 8,
+    reward: 5800,
+    investors: [
+      { avatar: "/src/assets/images/users/avatar1.png" },
+      { avatar: "/src/assets/images/users/avatar1.png" },
+    ],
+  },
+  {
+    id: 7,
+    reward: 2000,
+    investors: [
+      { avatar: "/src/assets/images/users/avatar1.png" },
+      { avatar: "/src/assets/images/users/avatar1.png" },
+      { avatar: "/src/assets/images/users/avatar1.png" },
+    ],
+  },
+  {
+    id: 6,
+    reward: 1300,
+    investors: [
+      { avatar: "/src/assets/images/users/avatar1.png" },
+      { avatar: "/src/assets/images/users/avatar1.png" },
+      { avatar: "/src/assets/images/users/avatar1.png" },
+      { avatar: "/src/assets/images/users/avatar1.png" },
+    ],
+  },
+  {
+    id: 5,
+    reward: 800,
+    investors: [
+      { avatar: "/src/assets/images/users/avatar1.png" },
+      { avatar: "/src/assets/images/users/avatar1.png" },
+      { avatar: "/src/assets/images/users/avatar1.png" },
+      { avatar: "/src/assets/images/users/avatar1.png" },
+      { avatar: "/src/assets/images/users/avatar1.png" },
+      { avatar: "/src/assets/images/users/avatar1.png" },
+      { avatar: "/src/assets/images/users/avatar1.png" },
+    ],
+  },
+  {
+    id: 4,
+    reward: 500,
+    investors: [
+      { avatar: "/src/assets/images/users/avatar1.png" },
+      { avatar: "/src/assets/images/users/avatar1.png" },
+      { avatar: "/src/assets/images/users/avatar1.png" },
+      { avatar: "/src/assets/images/users/avatar1.png" },
+      { avatar: "/src/assets/images/users/avatar1.png" },
+      { avatar: "/src/assets/images/users/avatar1.png" },
+      { avatar: "/src/assets/images/users/avatar1.png" },
+    ],
+  },
+  {
+    id: 3,
+    reward: 0,
+    investors: [],
+  },
+  {
+    id: 2,
+    reward: 200,
+    investors: [
+      { avatar: "/src/assets/images/users/avatar1.png" },
+      { avatar: "/src/assets/images/users/avatar1.png" },
+      { avatar: "/src/assets/images/users/avatar1.png" },
+      { avatar: "/src/assets/images/users/avatar1.png" },
+      { avatar: "/src/assets/images/users/avatar1.png" },
+      { avatar: "/src/assets/images/users/avatar1.png" },
+      { avatar: "/src/assets/images/users/avatar1.png" },
+      { avatar: "/src/assets/images/users/avatar1.png" },
+      { avatar: "/src/assets/images/users/avatar1.png" },
+    ],
+  },
+  {
+    id: 1,
+    reward: 100,
+    investors: [
+      { avatar: "/src/assets/images/users/avatar1.png" },
+      { avatar: "/src/assets/images/users/avatar1.png" },
+      { avatar: "/src/assets/images/users/avatar1.png" },
+      { avatar: "/src/assets/images/users/avatar1.png" },
+      { avatar: "/src/assets/images/users/avatar1.png" },
+      { avatar: "/src/assets/images/users/avatar1.png" },
+      { avatar: "/src/assets/images/users/avatar1.png" },
+      { avatar: "/src/assets/images/users/avatar1.png" },
+      { avatar: "/src/assets/images/users/avatar1.png" },
+      { avatar: "/src/assets/images/users/avatar1.png" },
+      { avatar: "/src/assets/images/users/avatar1.png" },
+    ],
   },
 ];

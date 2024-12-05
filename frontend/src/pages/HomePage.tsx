@@ -3,6 +3,7 @@ import BettingTracker from '../components/BettingTracker';
 import JackPotWonHistory from '../components/JackPotWonHistory';
 import BetSection from '../components/BetSection';
 import TopUserList from '../components/TopUserList';
+import JackPotSection from '../components/JackPotSection';
 
 const HomePage: React.FC = () => {
   return (
@@ -21,7 +22,7 @@ const HomePage: React.FC = () => {
           <TopUserList />
         </div>
         <div className="w-[431px]">
-          <div className="bg-card-primary rounded-lg p-4 flex flex-col gap-4"></div>
+          <JackPotSection />
         </div>
       </div>
     </div>
