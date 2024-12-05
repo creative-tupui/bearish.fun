@@ -77,26 +77,11 @@ body {
   scrollbar-width: none; /* Firefox */
 }
 
-code {
-  font-family: source-code-pcdro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
-
-button {
-  cursor: pointer;
-  font-family: "Orbitron", sans-serif;
-  font-weight: 500;
-}
 button:disabled {
   opacity: 0.5;
   cursor: default !important;
 }
 
-textarea,
-input {
-  font-family: "Orbitron", sans-serif;
-  font-weight: 500;
-}
 input:focus {
   outline: none;
 }
@@ -110,18 +95,5 @@ input::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
   appearance: textfield;
-}
-
-a {
-  color: white;
-  text-decoration: none;
-}
-
-.scroll-x::-webkit-scrollbar-thumb,
-.scroll-xy::-webkit-scrollbar-thumb,
-.scroll-y::-webkit-scrollbar-thumb {
-  width: 6px;
-  height: 6px;
-  background-color: #333541;
-  border-radius: 8px;
+  background-color: inherit;
 }
