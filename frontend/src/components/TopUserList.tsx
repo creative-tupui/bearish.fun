@@ -1,4 +1,4 @@
-import demoUserInfo from "../constants/demoUsersInfo";
+import { demoUsersInfo } from "../constants/demoInfo";
 const TopUserList = () => {
   return (
     <div className="w-full flex flex-col gap-1">
@@ -14,7 +14,7 @@ const TopUserList = () => {
             </div>
         </div>
       </div>
-      {demoUserInfo.map((user, index) => (
+      {demoUsersInfo.map((user, index) => (
         <div key={index} className="w-full bg-card-primary rounded-lg px-4 py-2">
           <div className="flex justify-between gap-1 lg:gap-4 items-center text-gray-secondary text-sm text-left text-nowrap">
             <div className="w-[39px] shrink-0 min-w-[33px]">{user.rank}</div>

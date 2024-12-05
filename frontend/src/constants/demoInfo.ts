@@ -1,4 +1,4 @@
-const demoUsersInfo = [
+export const demoUsersInfo = [
   {
     rank: 1,
     username: "JohnDoe",
@@ -91,4 +91,3 @@ const demoUsersInfo = [
   },
 ];
 
-export default demoUsersInfo;
