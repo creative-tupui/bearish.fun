@@ -1,11 +1,16 @@
 import { useWallet } from "@solana/wallet-adapter-react";
 import Button from "./ui/Button";
-import { useManageWalletDropdown } from "../contexts/ManageWalletDropDownContext";
+import { useModalOpenContext } from "../contexts/ModalOpenContext";
 
 const ManageWalletDropdown = () => {
   const { publicKey } = useWallet();
   const connectedWallet = publicKey?.toBase58();
-  const { setIsManageWalletDropdownOpen } = useManageWalletDropdown();
+  const { setIsManageWalletDropdownVisible, setDepositModalVisible } = useModalOpenContext();
+
+  const handleDeposit = () => {
+    setIsManageWalletDropdownVisible(false);
+    setDepositModalVisible(true);
+  };
 
   return (
     <>
@@ -13,7 +18,7 @@ const ManageWalletDropdown = () => {
         <div className="flex flex-col gap-5">
           <div className="flex justify-between items-center">
             <p className="text-lg font-medium text-gray-primary">Manage Wallet</p>
-            <img src="/src/assets/icons/power-off.png" alt="" className="w-5 h-5 cursor-pointer" onClick={() => setIsManageWalletDropdownOpen(false)} />
+            <img src="/src/assets/icons/power-off.png" alt="" className="w-5 h-5 cursor-pointer" onClick={() => setIsManageWalletDropdownVisible(false)} />
           </div>
           <div className="flex flex-col gap-4">
             <div className="flex justify-between items-center bg-card-secondary rounded-lg p-3 text-gray-secondary text-base">
@@ -32,7 +37,7 @@ const ManageWalletDropdown = () => {
               </div>
               <div className="flex gap-2">
                 <Button title="Withdraw" style="dark" onClick={() => {}} />
-                <Button title="Deposit" style="accent" onClick={() => {}} />
+                <Button title="Deposit" style="accent" onClick={handleDeposit} />
               </div>
             </div>
           </div>

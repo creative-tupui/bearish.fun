@@ -92,7 +92,7 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type="number"] {
+input {
   -moz-appearance: textfield;
   appearance: textfield;
   background-color: inherit;
