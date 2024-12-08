@@ -5,7 +5,7 @@ import BetSection from '../components/BetSection';
 import TopUserList from '../components/TopUserList';
 import JackPotSection from '../components/JackPotSection';
 import ManageWalletDropdown from '../components/ManageWalletDropdown';
-import { useManageWalletDropdown } from '../contexts/ManageWalletDropdownContext';
+import { useManageWalletDropdown } from '../contexts/ManageWalletDropDownContext';
 
 const HomePage: React.FC = () => {
   const { isVisible } = useManageWalletDropdown();

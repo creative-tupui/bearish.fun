@@ -1,6 +1,6 @@
 import { useWallet } from "@solana/wallet-adapter-react";
 import Button from "./ui/Button";
-import { useManageWalletDropdown } from "../contexts/ManageWalletDropdownContext";
+import { useManageWalletDropdown } from "../contexts/ManageWalletDropDownContext";
 
 const ManageWalletDropdown = () => {
   const { publicKey } = useWallet();

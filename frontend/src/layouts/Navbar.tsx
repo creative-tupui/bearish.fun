@@ -5,7 +5,7 @@ import { useWallet } from '@solana/wallet-adapter-react';
 import { useWalletModal } from "../contexts/WalletModalProvider"
 import userAvatar from '../assets/images/users/avatar1.png';
 import TermAgreementModal from '../components/TermAgreementModal';
-import { useManageWalletDropdown } from '../contexts/ManageWalletDropdownContext';
+import { useManageWalletDropdown } from '../contexts/ManageWalletDropDownContext';
 
 const Navbar: React.FC = () => {
   const { connecting, connected, disconnect } = useWallet();
