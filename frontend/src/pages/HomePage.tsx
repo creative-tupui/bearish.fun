@@ -5,10 +5,10 @@ import BetSection from '../components/BetSection';
 import TopUserList from '../components/TopUserList';
 import JackPotSection from '../components/JackPotSection';
 import ManageWalletDropdown from '../components/ManageWalletDropdown';
-import { useManageWalletDropdown } from '../contexts/ManageWalletDropDownContext';
+import { useModalOpenContext } from '../contexts/ModalOpenContext';
 
 const HomePage: React.FC = () => {
-  const { isVisible } = useManageWalletDropdown();
+  const { isManageWalletDropdownVisible } = useModalOpenContext();
   return (
     <div className="main w-full flex flex-col gap-1">
       <div className="w-full flex flex-col md:flex-row gap-1">
@@ -18,7 +18,7 @@ const HomePage: React.FC = () => {
         <div className="w-[431px] flex flex-col gap-1 relative">
           <JackPotWonHistory />
           <BetSection />
-          {isVisible && (
+          {isManageWalletDropdownVisible && (
             <ManageWalletDropdown />
           )}
         </div>

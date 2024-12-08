@@ -5,14 +5,14 @@ import { useWallet } from '@solana/wallet-adapter-react';
 import { useWalletModal } from "../contexts/WalletModalProvider"
 import userAvatar from '../assets/images/users/avatar1.png';
 import TermAgreementModal from '../components/TermAgreementModal';
-import { useManageWalletDropdown } from '../contexts/ManageWalletDropDownContext';
+import { useModalOpenContext } from '../contexts/ModalOpenContext';
 
 const Navbar: React.FC = () => {
   const { connecting, connected, disconnect } = useWallet();
   const { setVisible } = useWalletModal();
   const [_balance] = useState<number>(100.67);
   const [isTermAgreementModalOpen, setIsTermAgreementModalOpen] = useState(true);
-  const { setIsManageWalletDropdownOpen } = useManageWalletDropdown();
+  const { setIsManageWalletDropdownVisible } = useModalOpenContext();
 
   const handleConnect = async () => {
     setVisible(true);
@@ -24,7 +24,7 @@ const Navbar: React.FC = () => {
   };
 
   const handleOpenManageWalletDropdown = () => {
-    setIsManageWalletDropdownOpen(true);
+    setIsManageWalletDropdownVisible(true);
   };
 
   return (
