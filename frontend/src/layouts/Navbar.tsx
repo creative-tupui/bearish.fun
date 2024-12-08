@@ -8,6 +8,7 @@ import TermAgreementModal from '../components/TermAgreementModal';
 import { useModalOpenContext } from '../contexts/ModalOpenContext';
 import DepositModal from '../components/DepositModal';
 import DepositSuccessModal from '../components/DepositSuccessModal';
+import DepositFailedModal from '../components/DepositFailedModal';
 
 const Navbar: React.FC = () => {
   const { connecting, connected, disconnect } = useWallet();
@@ -20,6 +21,7 @@ const Navbar: React.FC = () => {
   const [_balance] = useState<number>(100.67);
   const [isTermAgreementModalOpen, setIsTermAgreementModalOpen] = useState(true);
   const [isDepositSuccessModalOpen, setIsDepositSuccessModalOpen] = useState(false);
+  const [isDepositFailedModalOpen, setIsDepositFailedModalOpen] = useState(false);
   const [depositedAmount, setDepositedAmount] = useState<number>(0);
   const [transactionLink, setTransactionLink] = useState<string>("");
 
@@ -41,6 +43,8 @@ const Navbar: React.FC = () => {
       setDepositedAmount(depositedAmount ?? 0);
       setTransactionLink(transactionLink ?? "");
       setIsDepositSuccessModalOpen(true);
+    } else {
+      setIsDepositFailedModalOpen(true);
     }
   };
 
@@ -84,6 +88,7 @@ const Navbar: React.FC = () => {
           setOpen={setIsDepositSuccessModalOpen}
         />
       }
+      {isDepositFailedModalOpen && <DepositFailedModal setOpen={setIsDepositFailedModalOpen} />}
     </>
   );
 };
