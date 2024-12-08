@@ -2,8 +2,18 @@ import { useState } from "react";
 import Modal from "./ui/Modal"
 import Button from "./ui/Button";
 
-const DepositModal = ({ setOpen }: Props) => {
+const DepositModal = ({ callback, setOpen }: Props) => {
   const [depositAmount, setDepositAmount] = useState<string>("0");
+
+  const handleCancel = () => {
+    setOpen(false);
+  };
+
+  const handleDeposit = () => {
+    console.log(`Depositing: $${depositAmount}`);
+    setOpen(false);
+    callback(true, Number(depositAmount), "https://solana.com");
+  };
 
   return (
     <Modal title="Deposit" onClose={() => setOpen(false)}>
@@ -33,8 +43,8 @@ const DepositModal = ({ setOpen }: Props) => {
           </div>
         </div>
         <div className="flex gap-4">
-          <Button title="Withdraw" style="dark" className="py-4" onClick={() => {}} />
-          <Button title="Deposit" style="accent" className="py-4" onClick={() => {}} />
+          <Button title="Cancel" style="dark" className="py-4" onClick={handleCancel} />
+          <Button title="Deposit" style="accent" className="py-4" onClick={handleDeposit} />
         </div>
         <div className="flex justify-between text-xs font-semibold">
           <p className="text-gray-secondary">Don’t have USDC on Solana?</p>
@@ -46,6 +56,7 @@ const DepositModal = ({ setOpen }: Props) => {
 }
 
 interface Props {
+  callback: (result: boolean, depositedAmount?: number, transactionLink?: string) => void;
   setOpen: (open: boolean) => void
 }
 

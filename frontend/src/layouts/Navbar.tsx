@@ -7,13 +7,21 @@ import userAvatar from '../assets/images/users/avatar1.png';
 import TermAgreementModal from '../components/TermAgreementModal';
 import { useModalOpenContext } from '../contexts/ModalOpenContext';
 import DepositModal from '../components/DepositModal';
+import DepositSuccessModal from '../components/DepositSuccessModal';
 
 const Navbar: React.FC = () => {
   const { connecting, connected, disconnect } = useWallet();
   const { setVisible } = useWalletModal();
+  const { 
+    setIsManageWalletDropdownVisible,
+    setDepositModalVisible,
+    depositModalVisible
+  } = useModalOpenContext();
   const [_balance] = useState<number>(100.67);
   const [isTermAgreementModalOpen, setIsTermAgreementModalOpen] = useState(true);
-  const { setIsManageWalletDropdownVisible, setDepositModalVisible, depositModalVisible } = useModalOpenContext();
+  const [isDepositSuccessModalOpen, setIsDepositSuccessModalOpen] = useState(false);
+  const [depositedAmount, setDepositedAmount] = useState<number>(0);
+  const [transactionLink, setTransactionLink] = useState<string>("");
 
   const handleConnect = async () => {
     setVisible(true);
@@ -26,6 +34,14 @@ const Navbar: React.FC = () => {
 
   const handleOpenManageWalletDropdown = () => {
     setIsManageWalletDropdownVisible(true);
+  };
+
+  const depositResultCallback = (result: boolean, depositedAmount?: number, transactionLink?: string) => {
+    if (result) {
+      setDepositedAmount(depositedAmount ?? 0);
+      setTransactionLink(transactionLink ?? "");
+      setIsDepositSuccessModalOpen(true);
+    }
   };
 
   return (
@@ -60,7 +76,14 @@ const Navbar: React.FC = () => {
         </div>
       </nav>
       {isTermAgreementModalOpen && <TermAgreementModal setOpen={setIsTermAgreementModalOpen} />}
-      {depositModalVisible && <DepositModal setOpen={setDepositModalVisible} />}
+      {depositModalVisible && <DepositModal callback={depositResultCallback} setOpen={setDepositModalVisible} />}
+      {isDepositSuccessModalOpen &&
+        <DepositSuccessModal
+          depositedAmount={depositedAmount}
+          transactionLink={transactionLink}
+          setOpen={setIsDepositSuccessModalOpen}
+        />
+      }
     </>
   );
 };
