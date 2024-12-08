@@ -11,7 +11,7 @@ const Modal: React.FC<ModalProps> = ({ title, children, onClose }) => {
   return (
     <div 
       onClick={onClose}
-      className="fixed inset-0 bg-[#06060B] bg-opacity-50 flex items-center justify-center"
+      className="fixed inset-0 bg-[#06060B] bg-opacity-50 flex items-center justify-center z-50"
     >
       <div 
         className="w-[431px] bg-card-primary rounded-lg border border-card-stroke p-4 flex flex-col gap-6"

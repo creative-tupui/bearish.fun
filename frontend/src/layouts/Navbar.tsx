@@ -6,13 +6,14 @@ import { useWalletModal } from "../contexts/WalletModalProvider"
 import userAvatar from '../assets/images/users/avatar1.png';
 import TermAgreementModal from '../components/TermAgreementModal';
 import { useModalOpenContext } from '../contexts/ModalOpenContext';
+import DepositModal from '../components/DepositModal';
 
 const Navbar: React.FC = () => {
   const { connecting, connected, disconnect } = useWallet();
   const { setVisible } = useWalletModal();
   const [_balance] = useState<number>(100.67);
   const [isTermAgreementModalOpen, setIsTermAgreementModalOpen] = useState(true);
-  const { setIsManageWalletDropdownVisible } = useModalOpenContext();
+  const { setIsManageWalletDropdownVisible, setDepositModalVisible, depositModalVisible } = useModalOpenContext();
 
   const handleConnect = async () => {
     setVisible(true);
@@ -59,6 +60,7 @@ const Navbar: React.FC = () => {
         </div>
       </nav>
       {isTermAgreementModalOpen && <TermAgreementModal setOpen={setIsTermAgreementModalOpen} />}
+      {depositModalVisible && <DepositModal setOpen={setDepositModalVisible} />}
     </>
   );
 };
