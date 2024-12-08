@@ -6,7 +6,7 @@ const  BettingTracker = () => {
   const [last10BetResult] = useState<Array<'up' | 'down'>>(['up', 'down', 'up', 'down', 'up', 'down', 'up', 'down', 'up', 'down']);
   return (
     <div className="bg-card-primary rounded-lg p-4 flex flex-col gap-4">
-      <div className="flex justify-between gap-4">
+      <div className="flex justify-between gap-4 pb-[5px]">
         <div className="flex flex-col gap-2 items-start">
           <h5 className="text-gray-primary text-2xl">Bitcoin</h5>
           <p className="text-gray-primary text-lg">{bitcoinPrice}</p>
@@ -17,7 +17,7 @@ const  BettingTracker = () => {
         </div>
       </div>
       <div className="w-full h-[376px] bg-card-secondary rounded-2xl"></div>
-      <div className="flex justify-between">
+      <div className="flex justify-between px-2 py-1">
         {last10BetResult.map((result, index) => (
           <UpDownVector state={result} key={index} />
         ))}

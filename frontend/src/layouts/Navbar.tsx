@@ -5,19 +5,26 @@ import { useWallet } from '@solana/wallet-adapter-react';
 import { useWalletModal } from "../contexts/WalletModalProvider"
 import userAvatar from '../assets/images/users/avatar1.png';
 import TermAgreementModal from '../components/TermAgreementModal';
+import { useManageWalletDropdown } from '../contexts/ManageWalletDropDownContext';
+
 const Navbar: React.FC = () => {
-  const { connecting, connected, disconnect, publicKey } = useWallet();
+  const { connecting, connected, disconnect } = useWallet();
   const { setVisible } = useWalletModal();
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_balance] = useState<number>(100.67);
   const [isTermAgreementModalOpen, setIsTermAgreementModalOpen] = useState(true);
+  const { setIsManageWalletDropdownOpen } = useManageWalletDropdown();
 
   const handleConnect = async () => {
     setVisible(true);
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleDisconnect = async () => {
     await disconnect();
+  };
+
+  const handleOpenManageWalletDropdown = () => {
+    setIsManageWalletDropdownOpen(true);
   };
 
   return (
@@ -43,8 +50,8 @@ const Navbar: React.FC = () => {
           )}
           {connected && (
             <div className="flex justify-end items-center gap-2">
-              <p className="text-gray-primary text-base leading-tight">$ {publicKey?.toBase58()}</p>
-              <button className="w-9 h-9 rounded-full overflow-hidden" onClick={handleDisconnect}>
+              <p className="text-gray-primary text-base leading-tight">$ {_balance}</p>
+              <button className="w-9 h-9 rounded-full overflow-hidden" onClick={handleOpenManageWalletDropdown}>
                 <img src={userAvatar} alt="User Avatar" className="w-full h-full object-cover" />
               </button>
             </div>
