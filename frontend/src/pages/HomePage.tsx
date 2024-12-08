@@ -9,7 +9,7 @@ const HomePage: React.FC = () => {
   return (
     <div className="main w-full flex flex-col gap-1">
       <div className="w-full flex flex-col md:flex-row gap-1">
-        <div className="w-[calc(100%-431px)]">
+        <div className="w-[calc(100%-435px)]">
           <BettingTracker />
         </div>
         <div className="w-[431px] flex flex-col gap-1">
@@ -18,7 +18,7 @@ const HomePage: React.FC = () => {
         </div>
       </div>
       <div className="w-full flex flex-col md:flex-row gap-1">
-        <div className="w-[calc(100%-431px)]">
+        <div className="w-[calc(100%-435px)]">
           <TopUserList />
         </div>
         <div className="w-[431px]">
