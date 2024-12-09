@@ -9,14 +9,17 @@ import { useModalOpenContext } from '../contexts/ModalOpenContext';
 import DepositModal from '../components/DepositModal';
 import DepositSuccessModal from '../components/DepositSuccessModal';
 import DepositFailedModal from '../components/DepositFailedModal';
+import WithdrawModal from '../components/WithdrawModal';
 
 const Navbar: React.FC = () => {
   const { connecting, connected, disconnect } = useWallet();
   const { setVisible } = useWalletModal();
   const { 
     setIsManageWalletDropdownVisible,
+    depositModalVisible,
     setDepositModalVisible,
-    depositModalVisible
+    withdrawModalVisible,
+    setWithdrawModalVisible
   } = useModalOpenContext();
   const [_balance] = useState<number>(100.67);
   const [isTermAgreementModalOpen, setIsTermAgreementModalOpen] = useState(true);
@@ -24,6 +27,9 @@ const Navbar: React.FC = () => {
   const [isDepositFailedModalOpen, setIsDepositFailedModalOpen] = useState(false);
   const [depositedAmount, setDepositedAmount] = useState<number>(0);
   const [transactionLink, setTransactionLink] = useState<string>("");
+  const [withdrawedAmount, setWithdrawedAmount] = useState<number>(0);
+  const [isWithdrawSuccessModalOpen, setIsWithdrawSuccessModalOpen] = useState(false);
+  const [isWithdrawFailedModalOpen, setIsWithdrawFailedModalOpen] = useState(false);
 
   const handleConnect = async () => {
     setVisible(true);
@@ -45,6 +51,16 @@ const Navbar: React.FC = () => {
       setIsDepositSuccessModalOpen(true);
     } else {
       setIsDepositFailedModalOpen(true);
+    }
+  };
+
+  const withdrawResultCallback = (result: boolean, withdrawedAmount?: number, transactionLink?: string) => {
+    if (result) {
+      setWithdrawedAmount(withdrawedAmount ?? 0);
+      setTransactionLink(transactionLink ?? "");
+      setIsWithdrawSuccessModalOpen(true);
+    } else {
+      setIsWithdrawFailedModalOpen(true);
     }
   };
 
@@ -89,6 +105,7 @@ const Navbar: React.FC = () => {
         />
       }
       {isDepositFailedModalOpen && <DepositFailedModal setOpen={setIsDepositFailedModalOpen} />}
+      {withdrawModalVisible && <WithdrawModal callback={withdrawResultCallback} setOpen={setWithdrawModalVisible} />}
     </>
   );
 };

@@ -5,11 +5,20 @@ import { useModalOpenContext } from "../contexts/ModalOpenContext";
 const ManageWalletDropdown = () => {
   const { publicKey } = useWallet();
   const connectedWallet = publicKey?.toBase58();
-  const { setIsManageWalletDropdownVisible, setDepositModalVisible } = useModalOpenContext();
+  const {
+    setIsManageWalletDropdownVisible,
+    setDepositModalVisible,
+    setWithdrawModalVisible
+  } = useModalOpenContext();
 
   const handleDeposit = () => {
     setIsManageWalletDropdownVisible(false);
     setDepositModalVisible(true);
+  };
+
+  const handleWithdraw = () => {
+    setIsManageWalletDropdownVisible(false);
+    setWithdrawModalVisible(true);
   };
 
   return (
@@ -36,7 +45,7 @@ const ManageWalletDropdown = () => {
                 <p>$ 0.00</p>
               </div>
               <div className="flex gap-2">
-                <Button title="Withdraw" style="dark" onClick={() => {}} />
+                <Button title="Withdraw" style="dark" onClick={handleWithdraw} />
                 <Button title="Deposit" style="accent" onClick={handleDeposit} />
               </div>
             </div>
