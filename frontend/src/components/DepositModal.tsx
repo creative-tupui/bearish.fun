@@ -59,7 +59,7 @@ const DepositModal = ({
         </div>
         <div className="flex gap-4">
           <Button title="Cancel" style="dark" className="py-4" onClick={handleCancel} />
-          <Button title="Deposit" style="accent" className="py-4" onClick={handleDeposit} />
+          <Button title="Deposit" style="accent" className="py-4" disable={insufficientWalletBalance} onClick={handleDeposit} />
         </div>
         <div className="flex justify-between text-xs font-semibold">
           <p className="text-gray-secondary">Don’t have USDC on Solana?</p>
