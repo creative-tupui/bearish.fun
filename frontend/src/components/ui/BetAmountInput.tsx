@@ -8,7 +8,7 @@ interface BetAmountInputProps {
 const BetAmountInput: React.FC<BetAmountInputProps> = ({ selectedBetAmount, setBetAmount }) => {
   const [betAmount, inputBetAmount] = useState<number>();
   return (
-    <div className={`w-[60px] h-9 p-2 flex items-center border border-gray-tertiary rounded-lg ${betAmount === selectedBetAmount ? 'bg-accent text-bg' : ''}`}>
+    <div className={`w-[60px] h-9 p-2 flex items-center border rounded-lg ${betAmount === selectedBetAmount ? 'border-accent' : 'border-gray-tertiary'}`}>
       <span className="mr-1">$</span>
       <input
         type="number"
