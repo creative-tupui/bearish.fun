@@ -45,7 +45,7 @@ const WithdrawModal = ({ callback, setOpen }: Props) => {
         </div>
         <div className="flex gap-4">
           <Button title="Cancel" style="dark" className="py-4" onClick={handleCancel} />
-          <Button title="withdraw" style="accent" className="py-4" onClick={handlewithdraw} />
+          <Button title="Withdraw" style="accent" className="py-4" onClick={handlewithdraw} />
         </div>
       </div>
     </Modal>
