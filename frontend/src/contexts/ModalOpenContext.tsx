@@ -5,18 +5,23 @@ const ModalOpenContext = createContext<{
   setIsManageWalletDropdownVisible: React.Dispatch<React.SetStateAction<boolean>>
   depositModalVisible: boolean,
   setDepositModalVisible: React.Dispatch<React.SetStateAction<boolean>>
+  withdrawModalVisible: boolean,
+  setWithdrawModalVisible: React.Dispatch<React.SetStateAction<boolean>>
 } | undefined>(undefined);
 
 export const ModalOpenProvider: React.FC<{children: React.ReactNode}> = ({ children }) => {
   const [isManageWalletDropdownVisible, setIsManageWalletDropdownVisible] = useState<boolean>(false);
   const [depositModalVisible, setDepositModalVisible] = useState<boolean>(false);
+  const [withdrawModalVisible, setWithdrawModalVisible] = useState<boolean>(false);
 
   return (
     <ModalOpenContext.Provider value={{ 
       isManageWalletDropdownVisible,
       setIsManageWalletDropdownVisible,
       depositModalVisible,
-      setDepositModalVisible
+      setDepositModalVisible,
+      withdrawModalVisible,
+      setWithdrawModalVisible
     }}>
       {children}
     </ModalOpenContext.Provider>
