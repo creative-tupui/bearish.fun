@@ -10,6 +10,7 @@ import DepositModal from '../components/DepositModal';
 import DepositSuccessModal from '../components/DepositSuccessModal';
 import DepositFailedModal from '../components/DepositFailedModal';
 import WithdrawModal from '../components/WithdrawModal';
+import WithdrawSuccessModal from '../components/WithdrawSuccessModal';
 
 const Navbar: React.FC = () => {
   const { connecting, connected, disconnect } = useWallet();
@@ -27,7 +28,7 @@ const Navbar: React.FC = () => {
   const [isDepositFailedModalOpen, setIsDepositFailedModalOpen] = useState(false);
   const [depositedAmount, setDepositedAmount] = useState<number>(0);
   const [transactionLink, setTransactionLink] = useState<string>("");
-  const [withdrawedAmount, setWithdrawedAmount] = useState<number>(0);
+  const [withdrewAmount, setWithdrewAmount] = useState<number>(0);
   const [isWithdrawSuccessModalOpen, setIsWithdrawSuccessModalOpen] = useState(false);
   const [isWithdrawFailedModalOpen, setIsWithdrawFailedModalOpen] = useState(false);
 
@@ -54,9 +55,9 @@ const Navbar: React.FC = () => {
     }
   };
 
-  const withdrawResultCallback = (result: boolean, withdrawedAmount?: number, transactionLink?: string) => {
+  const withdrawResultCallback = (result: boolean, withdrewAmount?: number, transactionLink?: string) => {
     if (result) {
-      setWithdrawedAmount(withdrawedAmount ?? 0);
+      setWithdrewAmount(withdrewAmount ?? 0);
       setTransactionLink(transactionLink ?? "");
       setIsWithdrawSuccessModalOpen(true);
     } else {
@@ -106,6 +107,13 @@ const Navbar: React.FC = () => {
       }
       {isDepositFailedModalOpen && <DepositFailedModal setOpen={setIsDepositFailedModalOpen} />}
       {withdrawModalVisible && <WithdrawModal callback={withdrawResultCallback} setOpen={setWithdrawModalVisible} />}
+      {isWithdrawSuccessModalOpen &&
+        <WithdrawSuccessModal
+          withdrewAmount={withdrewAmount}
+          transactionLink={transactionLink}
+          setOpen={setIsWithdrawSuccessModalOpen}
+        />
+      }
     </>
   );
 };
