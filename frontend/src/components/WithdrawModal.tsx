@@ -12,7 +12,7 @@ const WithdrawModal = ({ callback, setOpen }: Props) => {
   const handlewithdraw = () => {
     console.log(`withdrawing: $${withdrawAmount}`);
     setOpen(false);
-    callback(true, Number(withdrawAmount), "https://solana.com");
+    // callback(true, Number(withdrawAmount), "https://solana.com");
     callback(false)
   };
 

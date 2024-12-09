@@ -11,6 +11,7 @@ import DepositSuccessModal from '../components/DepositSuccessModal';
 import DepositFailedModal from '../components/DepositFailedModal';
 import WithdrawModal from '../components/WithdrawModal';
 import WithdrawSuccessModal from '../components/WithdrawSuccessModal';
+import WithdrawFailedModal from '../components/WithdrawFailedModal';
 
 const Navbar: React.FC = () => {
   const { connecting, connected, disconnect } = useWallet();
@@ -114,6 +115,7 @@ const Navbar: React.FC = () => {
           setOpen={setIsWithdrawSuccessModalOpen}
         />
       }
+      {isWithdrawFailedModalOpen && <WithdrawFailedModal setOpen={setIsWithdrawFailedModalOpen} />}
     </>
   );
 };

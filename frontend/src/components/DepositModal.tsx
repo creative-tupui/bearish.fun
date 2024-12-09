@@ -12,8 +12,8 @@ const DepositModal = ({ callback, setOpen }: Props) => {
   const handleDeposit = () => {
     console.log(`Depositing: $${depositAmount}`);
     setOpen(false);
-    // callback(true, Number(depositAmount), "https://solana.com");
-    callback(false)
+    callback(true, Number(depositAmount), "https://solana.com");
+    // callback(false)
   };
 
   return (
