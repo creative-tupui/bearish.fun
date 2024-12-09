@@ -14,7 +14,7 @@ import WithdrawSuccessModal from '../components/WithdrawSuccessModal';
 import WithdrawFailedModal from '../components/WithdrawFailedModal';
 
 const Navbar: React.FC = () => {
-  const { connecting, connected, disconnect } = useWallet();
+  const { connecting, connected } = useWallet();
   const { setVisible } = useWalletModal();
   const { 
     setIsManageWalletDropdownVisible,
@@ -35,11 +35,6 @@ const Navbar: React.FC = () => {
 
   const handleConnect = async () => {
     setVisible(true);
-  };
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const handleDisconnect = async () => {
-    await disconnect();
   };
 
   const handleOpenManageWalletDropdown = () => {
