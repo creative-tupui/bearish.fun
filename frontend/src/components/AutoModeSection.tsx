@@ -6,8 +6,8 @@ const AutoModeSection = () => {
     <div className="bg-card-secondary rounded-lg px-4 py-2 flex justify-between items-center gap-1">
       <div className="text-base font-medium text-gray-secondary">Auto Mode</div>
       <div className="relative flex">
-        <div className="w-5 h-5 border-2 border-gray-tertiary rounded-[4px] flex justify-center items-center">
-          {selected && <p className="text-gray-primary text-lg">✔</p>}
+        <div className={`w-5 h-5 border-2 rounded-[4px] flex justify-center items-center ${selected ? 'bg-accent border-accent' : ' border-gray-tertiary'}`}>
+          {selected && <img src="/src/assets/icons/check.png" alt="" className="w-3 h-3" />}
         </div>
         <input
           type="checkbox"
