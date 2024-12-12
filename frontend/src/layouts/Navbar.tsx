@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import logo from '../assets/images/logo.png';
-import solanaLogo from '../assets/images/solana-logo.png';
+import logo from '../assets/images/logo.svg';
+import solanaLogo from '../assets/images/solana.png';
 import { useWallet } from '@solana/wallet-adapter-react';
 import { useWalletModal } from "../contexts/WalletModalProvider"
 import userAvatar from '../assets/images/users/avatar1.png';
@@ -65,7 +65,7 @@ const Navbar: React.FC = () => {
     <>
       <nav className="flex justify-between items-center">
         <div className="flex items-center gap-6">
-          <img src={logo} alt="Logo" className="h-full" />
+          <img src={logo} alt="Logo" className="logo-image h-full" />
           <div className="flex items-center gap-4">
             <button className="rounded-lg py-2 px-3 bg-card-primary text-gray-primary">Crypto</button>
             <button className="rounded-lg py-2 px-3 text-gray-secondary">Docs</button>
