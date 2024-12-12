@@ -75,9 +75,12 @@ const Navbar: React.FC = () => {
           {!connected && (
             <div className="flex justify-end items-center gap-2">
               <div>
-                <img src={solanaLogo} alt="Logo" className="h-[22px] w-5" />
+                <img src={solanaLogo} alt="Logo" className="w-[22px] h-5" />
               </div>
-              <button className="bg-yellow p-2 rounded-lg text-black text-base leading-5 font-oxanium font-semibold" onClick={handleConnect}>
+              <button
+                className="bg-yellow p-2 rounded-lg text-black text-base leading-5 font-oxanium font-semibold"
+                onClick={handleConnect}
+              >
                 {connecting ? 'Connecting' : 'Connect'}
               </button>
             </div>

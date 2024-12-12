@@ -8,11 +8,11 @@ const  BettingTracker = () => {
     <div className="bg-card-primary rounded-lg p-4 flex flex-col gap-4">
       <div className="flex justify-between gap-4 pb-[5px]">
         <div className="flex flex-col gap-2 items-start">
-          <h5 className="text-gray-primary text-2xl">Bitcoin</h5>
+          <h5 className="text-gray-primary text-2xl font-bold">Bitcoin</h5>
           <p className="text-gray-primary text-lg">{bitcoinPrice}</p>
         </div>
         <div className="flex flex-col gap-2 items-end">
-          <h5 className="text-gray-primary text-2xl">30</h5>
+          <h5 className="text-gray-primary text-2xl font-bold">30</h5>
           <p className="text-gray-primary text-lg">Place your bets</p>
         </div>
       </div>

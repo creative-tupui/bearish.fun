@@ -6,7 +6,7 @@ import { ModalOpenProvider } from "../contexts/ModalOpenContext";
 
 const Layout: React.FC = () => {
   return (
-    <div className="layout max-w-[1040px] mx-auto my-32 text-center flex flex-col gap-5">
+    <div className="layout max-w-[1040px] mx-auto my-[72px] text-center flex flex-col gap-5">
       <ModalOpenProvider>
         <Navbar />
         <Outlet />
