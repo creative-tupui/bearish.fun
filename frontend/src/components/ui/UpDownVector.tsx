@@ -1,5 +1,5 @@
-import UpVector from '../../assets/icons/up-vector.png';
-import DownVector from '../../assets/icons/down-vector.png';
+import UpVector from '../../assets/icons/up.png';
+import DownVector from '../../assets/icons/down.png';
 const UpDownVector = ({ state }: Props) => {
   return (
     <div className="flex justify-center items-center w-8 h-8">

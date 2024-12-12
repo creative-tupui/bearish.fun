@@ -5,6 +5,8 @@ export interface User {
   bets: number,
   wins: number,
   winRate: number,
+  topSteak: number,
+  roi: number,
   netProfit: number,
 }
 

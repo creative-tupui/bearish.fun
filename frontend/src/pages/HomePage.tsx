@@ -23,14 +23,8 @@ const HomePage: React.FC = () => {
           )}
         </div>
       </div>
-      <div className="w-full flex flex-col md:flex-row gap-1">
-        <div className="w-[calc(100%-435px)]">
-          <TopUserList />
-        </div>
-        <div className="w-[431px]">
-          <JackPotSection />
-        </div>
-      </div>
+      <JackPotSection />
+      <TopUserList />
     </div>
   );
 };
