@@ -11,10 +11,10 @@ const TopUserList = () => {
           <div className="w-[718px] flex items-center gap-1 lg:gap-4">
             <div className="w-[115px]">Bets</div>
             <div className="w-[115px]">Wins</div>
-            <div className="w-[115px]">Win Rate</div>
-            <div className="w-[115px]">Top steak</div>
+            <div className="w-[115px]">Win rate</div>
+            <div className="w-[115px]">Top streak</div>
             <div className="w-[115px]">ROI</div>
-            <div className="w-[63px] shrink-0">Net Profit</div>
+            <div className="w-[63px] shrink-0 text-right">Net profit</div>
           </div>
         </div>
       </div>
@@ -47,7 +47,7 @@ const TopUserList = () => {
                     : user.roi
                 }
               </div>
-              <div className={`w-[63px] shrink-0 ${
+              <div className={`w-[63px] shrink-0 text-right ${
                 user.netProfit < 0 
                 ? "text-negative-light" 
                 : "text-positive-light"}`
