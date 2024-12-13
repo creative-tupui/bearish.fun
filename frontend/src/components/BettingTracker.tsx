@@ -16,7 +16,7 @@ const  BettingTracker = () => {
           <p className="text-gray-primary text-lg">Place your bets</p>
         </div>
       </div>
-      <div className="w-full h-[376px] bg-card-secondary rounded-2xl"></div>
+      <div className="w-full h-[330px] bg-card-secondary rounded-2xl"></div>
       <div className="flex justify-between px-2 py-1">
         {last10BetResult.map((result, index) => (
           <UpDownVector state={result} key={index} />
