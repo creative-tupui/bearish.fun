@@ -10,12 +10,6 @@ const BettedUserSection = () => {
     avatar1,
     avatar1,
     avatar1,
-    avatar1,
-    avatar1,
-    avatar1,
-    avatar1,
-    avatar1,
-    avatar1,
   ]
   
   return (
