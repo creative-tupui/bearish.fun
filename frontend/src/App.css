@@ -11,3 +11,19 @@
 .read-the-docs {
   color: #888;
 }
+
+.logo-image {
+  position: relative;
+}
+
+.logo-image:hover::after {
+  content: "gm bro";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #000;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+}
