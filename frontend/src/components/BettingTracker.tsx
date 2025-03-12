@@ -1,14 +1,14 @@
-import { useState,  useRef, useEffect } from "react";
+import { useState,  useRef } from "react";
 import { LineChart, Line, YAxis, ReferenceLine } from "recharts";
 import UpDownVector from "./ui/UpDownVector";
 import BitcoinPriceSocket from "./utils/BitcoinPriceSocket";
 
 const BettingTracker = () => {
   const [chartData, setChartData] = useState<Array<{ price: number, time: number }>>([]);
-  const [last10BetResult, setLast10BetResult] = useState<Array<'up' | 'down'>>(['up', 'down', 'up', 'down', 'up', 'down', 'up', 'down', 'up', 'down']);
+  const [last10BetResult, setLast10BetResult] = useState<Array<'up' | 'down'>>([]);
   const [remainingTime, setRemainingTime] = useState<number>(30);
   const chartContainerRef = useRef<HTMLDivElement>(null);
-
+  const [circleStartPrice, setCircleStartPrice] = useState<number>(0);
   // Function to handle price updates from the BitcoinPriceSocket
   const handlePricesUpdate = (prices: number[]) => {
     setChartData(() => {
@@ -26,8 +26,8 @@ const BettingTracker = () => {
   };
 
   // Function to handle period result updates
-  const handlePeriodResult = (result: 'up' | 'down') => {
-    setLast10BetResult(prev => [...prev.slice(1), result]);
+  const handlePeriodResult = (result: Array<'up' | 'down'>) => {
+     setLast10BetResult(result);
   };
  
   return (
@@ -36,6 +36,7 @@ const BettingTracker = () => {
         onPricesUpdate={handlePricesUpdate}
         onRemainingTimeUpdate={handleRemainingTimeUpdate}
         onPeriodResult={handlePeriodResult}
+        setCircleStartPrice={setCircleStartPrice}
       />
       <div className="flex justify-between gap-4 pb-[5px]">
         <div className="flex flex-col gap-2 items-start">
@@ -70,11 +71,21 @@ const BettingTracker = () => {
           <ReferenceLine
             y={chartData[chartData.length - 1]?.price}
             stroke="#666666"
-            strokeDasharray="3 3"
+            strokeDasharray="none"
             label={{
               value: chartData[chartData.length - 1]?.price,
               position: 'right',
               fill: '#666666'
+            }}
+          />
+           <ReferenceLine
+            y={circleStartPrice}
+            stroke="#00ff00"
+            strokeDasharray="none"
+            label={{
+              value: circleStartPrice,
+              position: 'right',
+              fill: '#00ff00'
             }}
           />
         </LineChart>
