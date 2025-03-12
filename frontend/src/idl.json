@@ -1,0 +1,331 @@
+{
+    "version": "0.1.0",
+    "name": "token_deposit",
+    "instructions": [
+      {
+        "name": "initialize",
+        "accounts": [
+          {
+            "name": "admin",
+            "isMut": true,
+            "isSigner": true
+          },
+          {
+            "name": "globalState",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "systemProgram",
+            "isMut": false,
+            "isSigner": false
+          }
+        ],
+        "args": []
+      },
+      {
+        "name": "updateAdmin",
+        "accounts": [
+          {
+            "name": "admin",
+            "isMut": true,
+            "isSigner": true
+          },
+          {
+            "name": "globalState",
+            "isMut": true,
+            "isSigner": false
+          }
+        ],
+        "args": [
+          {
+            "name": "newAdmin",
+            "type": "publicKey"
+          }
+        ]
+      },
+      {
+        "name": "updateUsdtAddress",
+        "accounts": [
+          {
+            "name": "admin",
+            "isMut": false,
+            "isSigner": true
+          },
+          {
+            "name": "globalState",
+            "isMut": true,
+            "isSigner": false
+          }
+        ],
+        "args": [
+          {
+            "name": "usdtAddress",
+            "type": "publicKey"
+          }
+        ]
+      },
+      {
+        "name": "depositUsdt",
+        "accounts": [
+          {
+            "name": "user",
+            "isMut": true,
+            "isSigner": true
+          },
+          {
+            "name": "globalState",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "usdtAddress",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "userUsdtAta",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "usdtAta",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "userState",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "associatedTokenProgram",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "tokenProgram",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "systemProgram",
+            "isMut": false,
+            "isSigner": false
+          }
+        ],
+        "args": [
+          {
+            "name": "usdtAmount",
+            "type": "u64"
+          }
+        ]
+      },
+      {
+        "name": "withdrawUsdt",
+        "accounts": [
+          {
+            "name": "admin",
+            "isMut": true,
+            "isSigner": true
+          },
+          {
+            "name": "globalState",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "usdtAddress",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "adminUsdtAta",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "usdtAta",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "associatedTokenProgram",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "tokenProgram",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "systemProgram",
+            "isMut": false,
+            "isSigner": false
+          }
+        ],
+        "args": [
+          {
+            "name": "usdtAmount",
+            "type": "u64"
+          }
+        ]
+      }
+    ],
+    "accounts": [
+      {
+        "name": "GlobalState",
+        "type": {
+          "kind": "struct",
+          "fields": [
+            {
+              "name": "admin",
+              "type": "publicKey"
+            },
+            {
+              "name": "amount",
+              "type": "u128"
+            },
+            {
+              "name": "usdtAddress",
+              "type": "publicKey"
+            }
+          ]
+        }
+      },
+      {
+        "name": "UserState",
+        "type": {
+          "kind": "struct",
+          "fields": [
+            {
+              "name": "user",
+              "type": "publicKey"
+            },
+            {
+              "name": "amount",
+              "type": "u64"
+            }
+          ]
+        }
+      }
+    ],
+    "events": [
+      {
+        "name": "GlobalStateInitialized",
+        "fields": [
+          {
+            "name": "admin",
+            "type": "publicKey",
+            "index": false
+          },
+          {
+            "name": "amount",
+            "type": "u128",
+            "index": false
+          },
+          {
+            "name": "usdtAddress",
+            "type": "publicKey",
+            "index": false
+          }
+        ]
+      },
+      {
+        "name": "AdminUpdated",
+        "fields": [
+          {
+            "name": "previousAdmin",
+            "type": "publicKey",
+            "index": false
+          },
+          {
+            "name": "newAdmin",
+            "type": "publicKey",
+            "index": false
+          }
+        ]
+      },
+      {
+        "name": "UsdtAddressUpdated",
+        "fields": [
+          {
+            "name": "previousUsdtAddress",
+            "type": "publicKey",
+            "index": false
+          },
+          {
+            "name": "newUsdtAddress",
+            "type": "publicKey",
+            "index": false
+          }
+        ]
+      },
+      {
+        "name": "DepositResult",
+        "fields": [
+          {
+            "name": "address",
+            "type": "publicKey",
+            "index": false
+          },
+          {
+            "name": "depositAmount",
+            "type": "u64",
+            "index": false
+          },
+          {
+            "name": "timestamp",
+            "type": "i64",
+            "index": false
+          }
+        ]
+      },
+      {
+        "name": "WithdrawResult",
+        "fields": [
+          {
+            "name": "address",
+            "type": "publicKey",
+            "index": false
+          },
+          {
+            "name": "withdrawAmount",
+            "type": "u64",
+            "index": false
+          },
+          {
+            "name": "timestamp",
+            "type": "i64",
+            "index": false
+          }
+        ]
+      }
+    ],
+    "errors": [
+      {
+        "code": 6000,
+        "name": "InvalidAdmin",
+        "msg": "Invalid admin"
+      },
+      {
+        "code": 6001,
+        "name": "AlreadyBecameAdmin",
+        "msg": "Already became an admin"
+      },
+      {
+        "code": 6002,
+        "name": "AlreadySet",
+        "msg": "Already set"
+      },
+      {
+        "code": 6003,
+        "name": "InvalidUsdtAmount",
+        "msg": "Invalid usdt amount"
+      }
+    ],
+    "metadata": {
+      "address": "Cjc3RL6hzMzK77HsNyr9z6VTpejWYWaGnk9qcGbkLVE"
+    }
+  }

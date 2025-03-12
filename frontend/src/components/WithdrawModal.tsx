@@ -1,19 +1,85 @@
 import { useState } from "react";
 import Modal from "./ui/Modal"
 import Button from "./ui/Button";
+import { Connection, PublicKey, clusterApiUrl, SystemProgram, VersionedTransaction, TransactionMessage } from "@solana/web3.js";
+import { AnchorProvider, Program, BN, Idl } from '@project-serum/anchor';
+import { getAssociatedTokenAddress, ASSOCIATED_TOKEN_PROGRAM_ID, TOKEN_PROGRAM_ID } from "@solana/spl-token";
+import { useWallet } from '@solana/wallet-adapter-react';
+import { PROGRAM_ID, usdt_address } from '../config';
+import IDL from '../idl.json'; // Assuming your IDL is in a JSON file
+import { getGlobalStateKey, getUserUsdtAccount, getUsdtAta, getUserStateKey } from '../utils';
+
 
 const WithdrawModal = ({ callback, setOpen }: Props) => {
   const [withdrawAmount, setWithdrawAmount] = useState<string>("0");
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+  const { publicKey, signTransaction, signAllTransactions } = useWallet();
 
   const handleCancel = () => {
     setOpen(false);
   };
 
-  const handlewithdraw = () => {
-    console.log(`withdrawing: $${withdrawAmount}`);
-    setOpen(false);
-    // callback(true, Number(withdrawAmount), "https://solana.com");
-    callback(false)
+  const handlewithdraw = async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      if (!publicKey || !signTransaction || !signAllTransactions) {
+        setError("Wallet not fully connected");
+        setLoading(false);
+        return;
+      }
+
+      const connection = new Connection(clusterApiUrl("devnet"), {
+        commitment: "confirmed",
+        confirmTransactionInitialTimeout: 60 * 1000,
+      });
+
+      const provider = new AnchorProvider(
+        connection,
+        { publicKey, signTransaction, signAllTransactions },
+        AnchorProvider.defaultOptions()
+      );
+      const program = new Program(IDL as Idl, PROGRAM_ID, provider);
+
+      const globalState = await getGlobalStateKey();
+      const usdtAmount = new BN(Number(withdrawAmount) * 1e6); // Convert to smallest unit
+
+      const instruction = await program.methods
+        .withdrawUsdt(usdtAmount)
+        .accounts({
+          admin: publicKey,
+          globalState: globalState,
+          usdtAddress: new PublicKey(usdt_address),
+          adminUsdtAta: await getUserUsdtAccount(publicKey),
+          usdtAta: await getUsdtAta(globalState),
+          associatedTokenProgram: ASSOCIATED_TOKEN_PROGRAM_ID,
+          tokenProgram: TOKEN_PROGRAM_ID,
+          systemProgram: SystemProgram.programId
+        }).instruction();
+
+      const tx = new VersionedTransaction(
+        new TransactionMessage({
+          payerKey: publicKey,
+          recentBlockhash: (await connection.getLatestBlockhash()).blockhash,
+          instructions: [instruction]
+        }).compileToV0Message()
+      );
+
+      const signedTx = await signTransaction(tx);
+      const txHash = await connection.sendRawTransaction(signedTx.serialize());
+      await connection.confirmTransaction(txHash);
+
+      console.log(`Transaction successful: ${txHash}`);
+      setOpen(false);
+      callback(true, Number(withdrawAmount), `https://explorer.solana.com/tx/${txHash}?cluster=devnet`);
+    } catch (err) {
+      console.error('Withdraw failed', err);
+      setError('Withdraw failed. Please try again.');
+      callback(false);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
