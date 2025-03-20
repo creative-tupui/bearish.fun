@@ -7,8 +7,7 @@ import { useWalletBalanceContext } from '../contexts/WalletBalanceContext';
 
 import { getAssociatedTokenAddress, ASSOCIATED_TOKEN_PROGRAM_ID, TOKEN_PROGRAM_ID } from "@solana/spl-token";
 import { useWallet } from '@solana/wallet-adapter-react';
-import { PROGRAM_ID, usdt_address } from '../config';
-import IDL from '../idl.json'; // Assuming your IDL is in a JSON file
+import { PROGRAM_ID, usdt_address, IDL } from '../config';
 
 import { getGlobalStateKey, getUserUsdtAccount, getUsdtAta, getUserStateKey } from '../utils';
 
@@ -60,17 +59,16 @@ const DepositModal = ({
       const usdtAmount = new BN(Number(depositAmount) * 1e6); // Convert to smallest unit
 
       const instruction = await program.methods
-        .depositUsdt(usdtAmount)
+        .deposit(usdtAmount)
         .accounts({
           user: publicKey,
-          globalState: globalState,
-          usdtAddress: new PublicKey(usdt_address),
-          userUsdtAta: await getUserUsdtAccount(publicKey),
-          usdtAta: await getUsdtAta(globalState),
-          userState: await getUserStateKey(publicKey),
-          associatedTokenProgram: ASSOCIATED_TOKEN_PROGRAM_ID,
-          tokenProgram: TOKEN_PROGRAM_ID,
-          systemProgram: SystemProgram.programId
+          platformConfig: globalState,
+          stablecoin: new PublicKey(usdt_address),
+          platformVault: await getUsdtAta(globalState),
+          userTokenAccount: await getUserUsdtAccount(publicKey),
+          userInfo: await getUserStateKey(publicKey),
+          systemProgram: SystemProgram.programId,
+          tokenProgram: TOKEN_PROGRAM_ID
         }).instruction();
 
       const tx = new VersionedTransaction(
