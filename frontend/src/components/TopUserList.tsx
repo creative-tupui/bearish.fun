@@ -1,5 +1,8 @@
-import { demoUsersInfo } from "../constants/demoInfo";
+import { usePoolContext } from "../contexts/PoolContext";
+
 const TopUserList = () => {
+  const { demoUsers } = usePoolContext();
+
   return (
     <div className="w-full flex flex-col gap-1">
       <div className="w-full bg-card-primary rounded-lg px-4 py-2">
@@ -18,7 +21,7 @@ const TopUserList = () => {
           </div>
         </div>
       </div>
-      {demoUsersInfo.map((user, index) => (
+      {demoUsers.map((user, index) => (
         <div key={index} className="w-full bg-card-primary rounded-lg px-4 py-2">
           <div className="flex gap-1 lg:gap-4 items-center text-gray-secondary text-sm text-left text-nowrap">
             <div className="w-[265px] flex gap-4">
@@ -33,28 +36,20 @@ const TopUserList = () => {
             <div className="w-[718px] flex items-center gap-1 lg:gap-4">
               <div className="w-[115px]">{user.bets}</div>
               <div className="w-[115px]">{user.wins}</div>
-              <div className="w-[115px]">{user.winRate * 100}%</div>
+              <div className="w-[115px]">{(user.winRate * 100).toFixed(0)}%</div>
               <div className="w-[115px]">{user.topSteak}</div>
-              <div className={`w-[115px] ${
-                user.roi < 0 
-                ? "text-negative-light" 
-                : "text-positive-light"}`
-              }>
+              <div className={`w-[115px] ${user.roi < 0 ? "text-negative-light" : "text-positive-light"}`}>
                 {user.roi < 0 
-                  ? `- ${(Math.abs(user.roi)*100).toFixed(0)}%` 
+                  ? `- ${(Math.abs(user.roi) * 100).toFixed(0)}%` 
                   : user.roi > 0 
-                    ? `+ ${(user.roi*100).toFixed(0)}%` 
+                    ? `+ ${(user.roi * 100).toFixed(0)}%` 
                     : user.roi
                 }
               </div>
-              <div className={`w-[63px] shrink-0 text-right ${
-                user.netProfit < 0 
-                ? "text-negative-light" 
-                : "text-positive-light"}`
-              }>
+              <div className={`w-[63px] shrink-0 text-right ${user.netProfit < 0 ? "text-negative-light" : "text-positive-light"}`}>
                 {user.netProfit < 0 
                   ? `- $${Math.abs(user.netProfit)}` 
-                  : user.netProfit > 0
+                  : user.netProfit > 0 
                     ? `+ $${user.netProfit}` 
                     : user.netProfit
                 }
