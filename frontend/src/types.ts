@@ -8,6 +8,8 @@ export interface User {
   topSteak: number,
   roi: number,
   netProfit: number,
+  depositedAmount: number,
+  walletAddress: string,
 }
 
 export interface JackpotUser {

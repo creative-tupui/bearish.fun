@@ -12,10 +12,13 @@ import DepositFailedModal from '../components/DepositFailedModal';
 import WithdrawModal from '../components/WithdrawModal';
 import WithdrawSuccessModal from '../components/WithdrawSuccessModal';
 import WithdrawFailedModal from '../components/WithdrawFailedModal';
+import { useWalletBalanceContext } from '../contexts/WalletBalanceContext';
 
 const Navbar: React.FC = () => {
   const { connecting, connected } = useWallet();
   const { setVisible } = useWalletModal();
+  const { walletBalance } = useWalletBalanceContext();
+
   const { 
     setIsManageWalletDropdownVisible,
     depositModalVisible,
@@ -23,7 +26,7 @@ const Navbar: React.FC = () => {
     withdrawModalVisible,
     setWithdrawModalVisible
   } = useModalOpenContext();
-  const [_balance] = useState<number>(100.67);
+
   const [isTermAgreementModalOpen, setIsTermAgreementModalOpen] = useState(true);
   const [isDepositSuccessModalOpen, setIsDepositSuccessModalOpen] = useState(false);
   const [isDepositFailedModalOpen, setIsDepositFailedModalOpen] = useState(false);
@@ -87,7 +90,7 @@ const Navbar: React.FC = () => {
           )}
           {connected && (
             <div className="flex justify-end items-center gap-2">
-              <p className="text-gray-primary text-base leading-tight p-2 rounded-lg hover:bg-card-primary hover:text-gray-secondary">$ {_balance}</p>
+              <p className="text-gray-primary text-base leading-tight p-2 rounded-lg hover:bg-card-primary hover:text-gray-secondary">$ {walletBalance*100}</p>
               <button className="w-9 h-9 rounded-full overflow-hidden" onClick={handleOpenManageWalletDropdown}>
                 <img src={userAvatar} alt="User Avatar" className="w-full h-full object-cover" />
               </button>

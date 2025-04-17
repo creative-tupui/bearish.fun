@@ -1,23 +1,16 @@
-import BettedUsersComponent from "./BettedUsersComponent"
-import avatar1 from "../assets/images/users/avatar1.png"
+// frontend/src/components/BettedUserSection.tsx
+import BettedUsersComponent from "./BettedUsersComponent";
+import { usePoolContext } from "../contexts/PoolContext";
 
 const BettedUserSection = () => {
-  const investors = [
-    avatar1,
-    avatar1,
-    avatar1,
-    avatar1,
-    avatar1,
-    avatar1,
-    avatar1,
-  ]
-  
+  const { upPool, downPool, upPoolInvestors, downPoolInvestors } = usePoolContext();
+
   return (
     <div className="flex gap-2">
-      <BettedUsersComponent betType="up" pool={105} potential={180} investors={investors} />
-      <BettedUsersComponent betType="down" pool={200} potential={150} investors={investors} />
+      <BettedUsersComponent betType="up" pool={upPool} potential={180} investors={upPoolInvestors} />
+      <BettedUsersComponent betType="down" pool={downPool} potential={150} investors={downPoolInvestors} />
     </div>
-  )
-}
+  );
+};
 
-export default BettedUserSection
+export default BettedUserSection;

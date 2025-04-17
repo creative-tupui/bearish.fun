@@ -1,8 +1,9 @@
 import AnimLetter from "../components/ui/AnimLetter";
+import { usePoolContext } from '../contexts/PoolContext';
 
 const JackPotWonHistory = () => {
-  const jackPotWonAmount = 15216.687;
-  const lastWonTime = "52 min";
+  const { jackpotAmount, lastWonTime } = usePoolContext();
+
 
   const splitNumber = (number: number) => {
     const formattedNumber = new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(number);
@@ -17,7 +18,7 @@ const JackPotWonHistory = () => {
     return ['$'].concat(formattedString.split(''));
   };
 
-  const jackPotWonAmountArray = splitNumber(jackPotWonAmount);
+  const jackPotWonAmountArray = splitNumber(jackpotAmount);
   return (
     <div className="bg-card-primary rounded-lg p-4 flex justify-center items-center">
       <div className="flex flex-col gap-2">
