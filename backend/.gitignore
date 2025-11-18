@@ -1,0 +1,8 @@
+node_modules
+<<<<<<< HEAD
+combined.log
+=======
+combined.log
+error.log
+.env
+>>>>>>> ee9a34956c86f8c0d0363c370125466ff3e7f82d
